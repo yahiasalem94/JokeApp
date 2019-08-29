@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 public class JokeActivity extends AppCompatActivity {
 
-    private final static String JOKE_KEY = "joke";
+    public final static String JOKE_KEY = "joke";
 
     private TextView jokeTextview;
     @Override

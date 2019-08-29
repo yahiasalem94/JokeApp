@@ -11,9 +11,7 @@ import com.example.android.jokeandroidlibrary.JokeActivity;
 import com.example.android.jokelibrary.Joke;
 
 
-public class MainActivity extends AppCompatActivity {
-
-    private final static String JOKE_KEY = "joke";
+public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.Callback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Joke joke = new Joke();
-        String handcraftedJoke = joke.tellAHandCraftedJoke();
-
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra(JOKE_KEY, handcraftedJoke);
-        startActivity(intent);
+        new EndpointsAsyncTask(this).execute();
     }
 
 
+    @Override
+    public void finished(String result) {
+        Intent intent = new Intent(this, JokeActivity.class);
+        intent.putExtra(JokeActivity.JOKE_KEY, result);
+        startActivity(intent);
+    }
 }
