@@ -23,7 +23,8 @@ public class MyEndpoint {
     @ApiMethod(name = "getJoke")
     public MyBean getJoke() {
         MyBean response = new MyBean();
-        response.setData(Joke.getJoke());
+        Joke newJoke = new Joke();
+        response.setData(newJoke.getJoke());
 
         return response;
     }

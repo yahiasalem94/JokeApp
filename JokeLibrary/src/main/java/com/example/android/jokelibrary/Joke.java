@@ -2,6 +2,8 @@ package com.example.android.jokelibrary;
 
 import java.util.Random;
 
+import sun.rmi.runtime.Log;
+
 public class Joke {
 
     public static String getJoke(){
@@ -17,6 +19,8 @@ public class Joke {
                 "Yo mama is so ugly that even Scooby Doo couldn't solve that mystery"
         };
         int index = new Random().nextInt(jokes.length);
+        System.out.println("joke is " + jokes[index]);
+
         return jokes[index];
     }
 }
